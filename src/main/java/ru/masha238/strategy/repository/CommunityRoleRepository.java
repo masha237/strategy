@@ -11,5 +11,5 @@ import java.util.Set;
 @Repository
 public interface CommunityRoleRepository extends JpaRepository<CommunityRole, Long> {
 
-    Optional<CommunityRoleType> findRoleTypesByUserId(Long userId);
+    Optional<CommunityRole> findCommunityRoleByType(CommunityRoleType communityRoleType);
 }

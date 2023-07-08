@@ -2,13 +2,12 @@ package ru.masha238.strategy.service;
 
 import org.springframework.stereotype.Service;
 import ru.masha238.strategy.domain.CommunityRole;
+import ru.masha238.strategy.domain.CommunityRoleType;
 import ru.masha238.strategy.domain.RecipeRole;
-import ru.masha238.strategy.domain.User;
 import ru.masha238.strategy.repository.CommunityRoleRepository;
 import ru.masha238.strategy.repository.RecipeRoleRepository;
 
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class RoleService {
@@ -27,5 +26,10 @@ public class RoleService {
 
     public Optional<RecipeRole> findRecipeRoleById(long userId, long recipeId) {
         return recipeRoleRepository.findRoleTypesByUserIdAndRecipeId(userId, recipeId);
+    }
+
+    public void changeRoleUser(CommunityRole communityRole, CommunityRoleType communityRoleType) {
+        communityRole.setType(communityRoleType);
+        communityRoleRepository.save(communityRole);
     }
 }

@@ -7,5 +7,5 @@ import java.util.HashSet;
 import java.util.Set;
 
 public enum CommunityRoleType {
-    ADMIN, MODERATOR, VERIFIED_USER;
+    ADMIN, MODERATOR, VERIFIED_USER, USER;
 }
