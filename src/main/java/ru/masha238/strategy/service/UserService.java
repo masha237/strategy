@@ -47,8 +47,9 @@ public class UserService implements UserDetailsService {
     public User registerUser(final RegisterForm request) {
         User user = new User();
         user.setLogin(request.getLogin());
+        user.setUsername(request.getLogin());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setUsername(request.getUsername());
+        user.setName(request.getUsername());
         user.setCommunityRole(communityRoleRepository.findCommunityRoleByType(CommunityRoleType.USER).orElseThrow(() -> new UsernameNotFoundException("invalid role")));
         return userRepository.save(user);
     }

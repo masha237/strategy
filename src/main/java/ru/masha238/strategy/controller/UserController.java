@@ -44,7 +44,10 @@ public class UserController {
 
 
     @GetMapping("/users")
-    public ResponseEntity<?> getUsers() {
+    public ResponseEntity<?> getUsers(Authentication auth) {
+        if (!checkCommunityRole(Set.of(CommunityRoleType.ADMIN), auth)) {
+            throw new AccessException("you hasn't access to /userRole");
+        }
         return ResponseEntity.ok(userService.findAll());
     }
 
