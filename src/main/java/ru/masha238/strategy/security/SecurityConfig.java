@@ -29,12 +29,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         // TODO
         http.authorizeRequests()
-                .antMatchers("/api/user/**").hasAnyAuthority("ROLE_ADMIN", "USER", "ROLE_VERIFIED_USER", "ROLE_MODERATOR")
-                .antMatchers("/api/recipes/**").hasAnyAuthority("ROLE_ADMIN","USER", "ROLE_VERIFIED_USER", "ROLE_MODERATOR")
+                .antMatchers("/api/user/**").hasAnyRole("ADMIN", "USER", "VERIFIED_USER", "MODERATOR")
+                .antMatchers("/api/recipes/**").hasAnyRole("ADMIN","USER", "VERIFIED_USER", "MODERATOR")
                 .antMatchers("/api/auth/**").permitAll()
               //  .antMatchers("/api/**/**").permitAll()
                 .and().httpBasic();
         http.cors().and().csrf().disable();
+        http.exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
         return http.build();
     }
     @Bean

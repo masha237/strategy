@@ -24,6 +24,14 @@ public class User implements UserDetails {
     @Size(min = 1, max = 1000)
     private String password;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     @NotEmpty
     @Size(min = 1, max = 100)
     private String name;
@@ -37,31 +45,31 @@ public class User implements UserDetails {
     private CommunityRole communityRole;
 
     public void setUsername(String name) {
-        this.name = name;
+        this.login = name;
     }
 
     public String getUsername() {
-        return name;
+        return login;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
