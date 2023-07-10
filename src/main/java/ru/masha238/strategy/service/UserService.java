@@ -58,4 +58,9 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByLogin(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
+
+    public void changeRoleUser(User user, CommunityRoleType communityRoleType) {
+        user.setCommunityRole(communityRoleRepository.findCommunityRoleByType(communityRoleType).orElseThrow(() -> new UsernameNotFoundException("invalid role")));
+        userRepository.save(user);
+    }
 }

@@ -13,7 +13,7 @@ const LoginPage = ({setUser}) => {
         AuthService.login(data).then((response) => {
             if (response.error === null) {
                 if (response.data) {
-                    console.log("keklogin");
+                    localStorage.setItem("auth", window.btoa(data.login + ":" + data.password));
                     localStorage.setItem("user", response.data);
                 }
                 setUser(response.data);
