@@ -1,9 +1,9 @@
 import React from 'react';
 
-const IndexPage = () => {
+const IndexPage = ({user}) => {
     return (
         <div>
-            
+            {user.login}
         </div>
     );
 };

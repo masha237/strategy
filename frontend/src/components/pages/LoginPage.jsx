@@ -14,7 +14,9 @@ const LoginPage = ({setUser}) => {
             if (response.error === null) {
                 if (response.data) {
                     localStorage.setItem("auth", window.btoa(data.login + ":" + data.password));
-                    localStorage.setItem("user", response.data);
+                    localStorage.setItem("user", JSON.stringify({
+                        login: response.data.login,
+                        role: response.data.communityRole.type}));
                 }
                 setUser(response.data);
                 navigate("/");

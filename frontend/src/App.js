@@ -16,8 +16,8 @@ function App() {
 
     useEffect(() => {
         console.log(localStorage.getItem("user"))
-        setUser(localStorage.getItem("user"))
-    }, [user]);
+        setUser(JSON.parse(localStorage.getItem("user")))
+    }, []);
 
     return (
 
@@ -25,10 +25,11 @@ function App() {
             {user &&
             <Routes>
                 <Route path="/" element={<Layout user={user}/>}>
-                    <Route index element={<IndexPage/>}/>
+                    <Route index element={<IndexPage user={user}/>}/>
                     <Route path="user/:login" element={<UserPage/>}/>
                     <Route path="logout" element={<Logout setUser={setUser}/>}/>
-                    <Route path="users" element={<UsersPage user={user}/>}/>
+                    {user.role === "ADMIN" &&
+                    <Route path="users" element={<UsersPage user={user}/>}/>}
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Route>
             </Routes>

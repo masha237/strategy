@@ -6,7 +6,7 @@ const Logout = ({setUser}) => {
     useEffect(() => {
         AuthService.logout();
         setUser(null);
-        localStorage.removeItem("user");
+        localStorage.removeItem("communityRole");
         localStorage.removeItem("auth");
     }, []);
 
