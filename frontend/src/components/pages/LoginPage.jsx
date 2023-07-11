@@ -18,7 +18,9 @@ const LoginPage = ({setUser}) => {
                         login: response.data.login,
                         role: response.data.communityRole.type}));
                 }
-                setUser(response.data);
+                setUser({
+                    login: response.data.login,
+                    role: response.data.communityRole.type});
                 navigate("/");
             } else {
                 setError(response.error);

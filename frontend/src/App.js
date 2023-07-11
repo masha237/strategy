@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import UsersPage from "./components/pages/UsersPage";
+import WriteRecipePage from "./components/pages/WriteRecipePage";
 
 
 
@@ -28,6 +29,7 @@ function App() {
                     <Route index element={<IndexPage user={user}/>}/>
                     <Route path="user/:login" element={<UserPage/>}/>
                     <Route path="logout" element={<Logout setUser={setUser}/>}/>
+                    <Route path="writePost" element={<WriteRecipePage/>}/>
                     {user.role === "ADMIN" &&
                     <Route path="users" element={<UsersPage user={user}/>}/>}
                     <Route path="*" element={<NotFoundPage/>}/>

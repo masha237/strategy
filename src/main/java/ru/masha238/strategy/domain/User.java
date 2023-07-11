@@ -123,6 +123,16 @@ public class User implements UserDetails {
         return recipes;
     }
 
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "user_id")
+    @OrderBy("creationTime desc")
+    private List<Recipe> favourite = new ArrayList<>();
 
+    public List<Recipe> getFavourite() {
+        return favourite;
+    }
 
+    public void setFavourite(List<Recipe> favourite) {
+        this.favourite = favourite;
+    }
 }

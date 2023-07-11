@@ -17,6 +17,7 @@ export const DELETE_FRIEND = "deleteFriend";
 export const FILE = "file";
 export const PEOPLE = "getPeople";
 
-export const POST = "post/"
+export const RECIPE = "recipe/"
 export const WRITE = "write"
 export const LIKE = "like"
+export const TAGS = "tags"

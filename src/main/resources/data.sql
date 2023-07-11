@@ -1,4 +1,3 @@
-
 INSERT INTO community_role (id, type)
 SELECT 1, 'ADMIN'
 WHERE NOT EXISTS (SELECT * FROM community_role WHERE id=1);
@@ -11,5 +10,3 @@ WHERE NOT EXISTS (SELECT * FROM community_role WHERE id=3);
 INSERT INTO community_role (id, type)
 SELECT 4, 'USER'
 WHERE NOT EXISTS (SELECT * FROM community_role WHERE id=4);
-
-

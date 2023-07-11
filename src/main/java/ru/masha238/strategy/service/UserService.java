@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.masha238.strategy.domain.CommunityRoleType;
 import ru.masha238.strategy.domain.User;
+import ru.masha238.strategy.exception.ValidationException;
 import ru.masha238.strategy.form.RegisterForm;
 import ru.masha238.strategy.repository.CommunityRoleRepository;
 import ru.masha238.strategy.repository.UserRepository;
@@ -45,6 +46,20 @@ public class UserService implements UserDetailsService {
 
 
     public User registerUser(final RegisterForm request) {
+        if (!userRepository.findByLogin(request.getLogin()).isEmpty()) {
+            throw new ValidationException("Not unique login");
+        }
+
+        if (request.getUsername().length() > 100) {
+            throw new ValidationException("Name too long");
+        }
+        if (request.getLogin().length() > 100) {
+            throw new ValidationException("Login too long");
+        }
+        if (request.getPassword().length() > 256) {
+            throw new ValidationException("Password too long");
+        }
+
         User user = new User();
         user.setLogin(request.getLogin());
         user.setUsername(request.getLogin());
