@@ -13,12 +13,10 @@ import java.util.*;
 public class Recipe {
     @NotEmpty
     @Size(min = 1, max = 100)
-    @Column(unique = true, nullable = false)
     private String title;
 
     @NotEmpty
     @Size(min = 1, max = 10000)
-    @Column(unique = true, nullable = false)
     private String description;
 
     public String getDescription() {

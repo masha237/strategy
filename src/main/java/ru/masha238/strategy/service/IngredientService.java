@@ -22,6 +22,9 @@ public class IngredientService {
     public List<Ingredient> getAll() {
         return ingredientRepository.findAll();
     }
+    public Optional<Ingredient> findByName(String tag) {
+        return ingredientRepository.findByName(tag);
+    }
 
     public void addIngredient(String ingredient) {
         ingredientRepository.findByName(ingredient).orElseGet(() -> {

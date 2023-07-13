@@ -29,20 +29,28 @@ const RecipeForm = () => {
         console.log(values);
 
         console.log(options);
-        setOptions([]);
         // validation
-        // navigate("/");
+        RecipeService.writeRecipe(values, options).then((response) => {
+            if (response.error === null) {
+                setOptions([]);
+
+                navigate("/");
+            } else {
+                setError(response.error);
+            }
+        }).catch(console.log);
+
     }
 
     return (
-        <Form name="login-form" initialValues={{remember: false}} onFinish={submit} autoComplete="off"
+        <Form id="recipe-form" name="login-form" initialValues={{remember: false}} onFinish={submit} autoComplete="off"
               labelCol={{span: 2}} wrapperCol={{span: 8}}>
             <Form.Item
                 name={["name"]}
             >
                 <Input placeholder="Название"/>
             </Form.Item>
-            <Form.List name="ingradients"
+            <Form.List name="ingredients"
                        initialValue={[
                            { ingredient: "", amount: "" }
                        ]}>
@@ -56,7 +64,6 @@ const RecipeForm = () => {
                             >
                                 <Form.Item
                                     {...field}
-                                    style={{width: "80%"}}
                                     name={[field.name, "ingredient"]}
                                     key={field.key + "ingredient"}
                                 >

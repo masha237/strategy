@@ -6,7 +6,11 @@
     margin: auto;
     padding: 10px 0 0 0
 }
-.ant-space-item:first-child {
+.css-dev-only-do-not-override-14wwjjs  .ant-space-item:first-of-type {
+    width: 100%;
+}
+
+#recipe-form .css-dev-only-do-not-override-14wwjjs  .ant-form-item:first-of-type {
     width: 100%;
 }
 

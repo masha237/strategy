@@ -23,6 +23,10 @@ public class TagService {
         return tagRepository.findAll();
     }
 
+    public Optional<Tag> findByName(String tag) {
+        return tagRepository.findByName(tag);
+    }
+
     public void addTag(String tag) {
         tagRepository.findByName(tag).orElseGet(() -> {
             Tag newTag = new Tag();

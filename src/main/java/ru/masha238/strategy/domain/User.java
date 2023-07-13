@@ -126,6 +126,7 @@ public class User implements UserDetails {
     @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "user_id")
     @OrderBy("creationTime desc")
+    @JsonIgnore
     private List<Recipe> favourite = new ArrayList<>();
 
     public List<Recipe> getFavourite() {

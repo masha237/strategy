@@ -5,10 +5,18 @@ import {Util} from "./Util";
 
 
 export class RecipeService {
-    static writeRecipe(array) {
-
+    static writeRecipe(form, tags) {
+        console.log({
+            tags: tags,
+            title: form.name,
+            description: form.description,
+            recipeIngredientData: form.ingredients
+        });
         return axios.post(API_URL + RECIPE + WRITE, {
-            array: array
+            tags: tags,
+            title: form.name,
+            description: form.description,
+            recipeIngredientData: form.ingredients
         },{
             headers: {"Authorization": Util.basicAuth()}
         }).then(response => {

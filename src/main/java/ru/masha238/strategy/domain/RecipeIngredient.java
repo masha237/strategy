@@ -18,6 +18,14 @@ public class RecipeIngredient {
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
